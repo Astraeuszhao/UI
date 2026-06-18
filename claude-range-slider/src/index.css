@@ -1,0 +1,39 @@
+/**
+ * @file        index.css
+ * @author      Astraeus
+ * @created     2026-06-18 20:08:51 UTC
+ * @license     MIT
+ *
+ * Global styles. Imports Tailwind CSS and sets base body defaults.
+ *
+ * @disclaimer
+ * This file is released under the MIT License. Anyone may use it for any
+ * purpose. The author accepts no liability for any outcome arising from its use.
+ * All rights and final interpretation of this file are reserved by the author.
+ * To contact the author: astraeuszhao@gmail.com
+ */
+
+@import "tailwindcss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0a0a0a;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
