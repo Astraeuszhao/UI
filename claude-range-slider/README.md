@@ -9,6 +9,12 @@ This is a React + TypeScript + Tailwind CSS reimplementation inspired by the eff
 ## Features
 
 - **WebGL2 fire animation** — a four-pass render pipeline (fire simulation, horizontal blur, vertical blur, tone-mapped composite) drawn directly onto a canvas in screen blend mode.
+## Demo
+
+<video src="./public/demo.mp4" controls muted loop playsinline></video>
+
+---
+
 - **Snap-to-stop slider** — the thumb snaps to five discrete stops (Low, Medium, High, and Ultracode), each aligned precisely with a track dot.
 - **Idle-aware render loop** — the animation loop automatically suspends after a period of inactivity to conserve resources, and resumes when the slider becomes active.
 - **Context-loss recovery** — WebGL programs and framebuffers are rebuilt automatically if the GPU context is lost and restored.
