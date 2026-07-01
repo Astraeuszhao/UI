@@ -8,7 +8,7 @@ This is a React + TypeScript + Tailwind CSS reimplementation inspired by the eff
 
 ## Demo
 
-<video src="./public/demo.mp4" width="600" controls autoplay muted loop></video>
+<video src="https://github.com/Astraeuszhao/UI/raw/main/claude-range-slider/public/demo.mp4" width="600" controls autoplay muted loop></video>
 
 ---
 
