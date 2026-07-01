@@ -13,7 +13,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-export type StatusLabel = 'Flow' | 'Pro' | 'Max' | 'Ultracode'
+export type StatusLabel = 'Flow' | 'Lite' | 'Pro' | 'Max' | 'Ultracode'
 
 export interface SliderState {
   sliderValue: number
@@ -22,27 +22,39 @@ export interface SliderState {
   isAnimating: boolean
   statusLabel: StatusLabel
   onInput: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onMouseUp: () => void
+  onTouchEnd: () => void
 }
 
 const THRESHOLD = 100
-const ANIMATION_DURATION = 200
-const SNAP_THRESHOLD = 3
+const ANIMATION_DURATION = 150
+const SNAP_THRESHOLD = 1
+
+const SNAP_POINTS = [0, 25, 50, 75, 100]
+
+function snapToNearest(value: number): number {
+  return SNAP_POINTS.reduce((prev, curr) =>
+    Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+  )
+}
 
 function getLabel(value: number): StatusLabel {
-  if (value < 33) return 'Flow'
-  if (value < 66) return 'Pro'
+  if (value <= 0) return 'Flow'
+  if (value <= 25) return 'Lite'
+  if (value <= 50) return 'Pro'
+  if (value <= 75) return 'Max'
   if (value < THRESHOLD) return 'Max'
   return 'Ultracode'
 }
 
 export function useSliderState(): SliderState {
-  const [targetValue, setTargetValue] = useState(70)
-  const [sliderValue, setSliderValue] = useState(70)
+  const [targetValue, setTargetValue] = useState(75)
+  const [sliderValue, setSliderValue] = useState(75)
   const [isAnimating, setIsAnimating] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const prevLabelRef = useRef<StatusLabel>(getLabel(70))
+  const prevLabelRef = useRef<StatusLabel>(getLabel(75))
   const animationRef = useRef<number | null>(null)
-  const startValueRef = useRef(70)
+  const startValueRef = useRef(75)
   const startTimeRef = useRef(0)
 
   const statusLabel = getLabel(sliderValue)
@@ -115,5 +127,15 @@ export function useSliderState(): SliderState {
     setTargetValue(parseInt(e.target.value, 10))
   }, [])
 
-  return { sliderValue, isActive, isFull, isAnimating, statusLabel, onInput }
+  const onMouseUp = useCallback(() => {
+    const snapped = snapToNearest(sliderValue)
+    setTargetValue(snapped)
+  }, [sliderValue])
+
+  const onTouchEnd = useCallback(() => {
+    const snapped = snapToNearest(sliderValue)
+    setTargetValue(snapped)
+  }, [sliderValue])
+
+  return { sliderValue, isActive, isFull, isAnimating, statusLabel, onInput, onMouseUp, onTouchEnd }
 }

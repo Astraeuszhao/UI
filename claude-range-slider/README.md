@@ -8,17 +8,18 @@ This is a React + TypeScript + Tailwind CSS reimplementation inspired by the eff
 
 ## Demo
 
-![Claude Range Slider Demo](./public/demo.gif)
+<video src="./public/demo.mp4" width="600" controls autoplay muted loop></video>
 
 ---
 
 ## Features
 
-- **WebGL2 fire animation** — a four-pass render pipeline (fire simulation, horizontal blur, vertical blur, tone-mapped composite) drawn directly onto a canvas in screen blend mode.
-- **Snap-to-stop slider** — the thumb snaps to five discrete stops (Low, Medium, High, and Ultracode), each aligned precisely with a track dot.
-- **Idle-aware render loop** — the animation loop automatically suspends after a period of inactivity to conserve resources, and resumes when the slider becomes active.
-- **Context-loss recovery** — WebGL programs and framebuffers are rebuilt automatically if the GPU context is lost and restored.
-- **Squircle clipping** — card and track use SVG `clipPath` squircle geometry for smoothly rounded corners.
+- **WebGL2 fire animation**  a four-pass render pipeline (fire simulation, horizontal blur, vertical blur, tone-mapped composite) drawn directly onto a canvas in screen blend mode.
+- **Snap-to-stop slider**  the thumb snaps to five discrete stops (Flow, Lite, Pro, Max, and Ultracode), each aligned precisely with a track dot.
+- **Smooth drag animation**  when dragging, the slider moves fluidly; on release, it smoothly animates to the nearest stop.
+- **Idle-aware render loop**  the animation loop automatically suspends after a period of inactivity to conserve resources, and resumes when the slider becomes active.
+- **Context-loss recovery**  WebGL programs and framebuffers are rebuilt automatically if the GPU context is lost and restored.
+- **Squircle clipping**  card and track use SVG `clipPath` squircle geometry for smoothly rounded corners.
 
 ---
 
@@ -44,7 +45,7 @@ npm install
 npm run dev
 ```
 
-Then open the local URL printed in the terminal (default `http://localhost:5173`).
+Then open the local URL printed in the terminal (default `http://localhost:1313`).
 
 To create a production build:
 
@@ -59,23 +60,23 @@ npm run preview
 
 ```
 claude-range-slider/
-├── src/
-│   ├── components/
-│   │   └── EffortCard/
-│   │       ├── EffortCard.tsx        # Presentation: layout, styles, markup
-│   │       ├── hooks/
-│   │       │   ├── useSliderState.ts # Slider value, labels, flip animation
-│   │       │   └── useWebglFire.ts   # WebGL2 engine and render loop
-│   │       └── shaders/
-│   │           └── index.ts          # GLSL shader source strings
-│   ├── App.tsx
-│   ├── main.tsx
-│   ├── index.css
-│   └── vite-env.d.ts
-├── index.html
-├── package.json
-├── vite.config.ts
-└── tsconfig.json
+ src/
+    components/
+       EffortCard/
+           EffortCard.tsx        # Presentation: layout, styles, markup
+           hooks/
+              useSliderState.ts # Slider value, labels, flip animation
+              useWebglFire.ts   # WebGL2 engine and render loop
+           shaders/
+               index.ts          # GLSL shader source strings
+    App.tsx
+    main.tsx
+    index.css
+    vite-env.d.ts
+ index.html
+ package.json
+ vite.config.ts
+ tsconfig.json
 ```
 
 ---
@@ -84,9 +85,9 @@ claude-range-slider/
 
 The component separates concerns across three units:
 
-1. `EffortCard.tsx` handles presentation only — layout, styles, the squircle clip paths, the status label, and the masked canvas layer.
-2. `useSliderState.ts` is pure UI logic — it derives the status label from the slider value and triggers the flip-up animation when the value crosses the Ultracode threshold.
-3. `useWebglFire.ts` owns the WebGL2 engine — it compiles shaders, manages framebuffers, runs the four-pass render loop, and cleans up all GPU resources on unmount.
+1. `EffortCard.tsx` handles presentation only  layout, styles, the squircle clip paths, the status label, and the masked canvas layer.
+2. `useSliderState.ts` is pure UI logic  it derives the status label from the slider value and triggers the flip-up animation when the value crosses the Ultracode threshold.
+3. `useWebglFire.ts` owns the WebGL2 engine  it compiles shaders, manages framebuffers, runs the four-pass render loop, and cleans up all GPU resources on unmount.
 
 The fire effect renders into off-screen framebuffers using a ping-pong technique: each frame feeds the previous frame back into the simulation so embers decay over time, then the result is blurred and composited to the screen.
 
@@ -114,4 +115,4 @@ This project is freely available for any use, whether commercial or non-commerci
 
 ## License
 
-[MIT License](../LICENSE) &copy; 2026 Astraeus
+[GPL-2.0-only License](../LICENSE) &copy; 2026 Astraeus

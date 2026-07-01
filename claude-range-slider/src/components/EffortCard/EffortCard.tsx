@@ -49,17 +49,9 @@ export default function EffortCard() {
   const clipId = `squircle-${uid}`
   const clipTrackId = `squircle-track-${uid}`
 
-  const { sliderValue, isActive, isFull, isAnimating, statusLabel, onInput } =
-    useSliderState()
+  const { sliderValue, isActive, isFull, isAnimating, statusLabel, onInput, onMouseUp, onTouchEnd } = useSliderState()
 
-  /** Snap the raw input to the nearest 25-unit stop before forwarding. */
-  const onSnapInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const raw = parseInt(e.target.value, 10)
-    const snapped = Math.round(raw / 25) * 25
-    e.target.value = String(snapped)
-    onInput(e)
-  }
-
+  
   useWebglFire(canvasRef, sliderValue, isActive)
 
   const cardClipStyle: CSSProperties = { clipPath: `url(#${clipId})` }
@@ -167,9 +159,8 @@ export default function EffortCard() {
               type="range"
               min={0}
               max={100}
-              step={25}
               value={sliderValue}
-              onChange={onSnapInput}
+              onChange={onInput} onMouseUp={onMouseUp} onTouchEnd={onTouchEnd}
               className={isActive ? 'effort-glowing' : ''}
               style={RANGE_STYLE}
             />
@@ -183,7 +174,7 @@ export default function EffortCard() {
   )
 }
 
-/* ── static style objects ─────────────────────────────────────────────── */
+/* 闂佸啿鍘滈崑鎾绘煃閸忓浜?static style objects 闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸?*/
 
 const CARD_SHADOW_STYLE: CSSProperties = {
   transition: 'filter 0.2s ease',
@@ -320,7 +311,7 @@ const RANGE_STYLE: CSSProperties = {
   padding: 0,
 }
 
-/* ── injected CSS (thumb styles require pseudo-element selectors) ─────── */
+/* 闂佸啿鍘滈崑鎾绘煃閸忓浜?injected CSS (thumb styles require pseudo-element selectors) 闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸嬫捇鏌嶉崗澶婁壕闂佸啿鍘滈崑鎾绘煃閸忓浜鹃梺鍐插帨閸?*/
 
 const CSS_STRING = `
 @keyframes flipUpFromBottom {
