@@ -2,21 +2,18 @@
  * @file        useSliderState.ts
  * @author      Astraeus
  * @created     2026-06-18 20:08:51 UTC
- * @license     MIT
+ * @license     GPL-2.0-only
  *
  * Manages slider value, derived status labels, and the flip-up animation
  * that fires when the slider reaches the "Ultracode" threshold.
  *
  * @disclaimer
- * This file is released under the MIT License. Anyone may use it for any
- * purpose. The author accepts no liability for any outcome arising from its use.
- * All rights and final interpretation of this file are reserved by the author.
- * To contact the author: astraeuszhao@gmail.com
+ * This file is distributed under GNU General Public License v2.0. Anyone who modifies any source files of this project shall fully open-source all modified codes under the same GPLv2 license. The author assumes no liability for any direct or indirect economic losses and legal risks arising from the usage of this code. All interpretation rights of this repository belong exclusively to Astraeus. Contact: astraeuszhao@gmail.com
  */
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-export type StatusLabel = 'Low' | 'Medium' | 'High' | 'Ultracode'
+export type StatusLabel = 'Flow' | 'Pro' | 'Max' | 'Ultracode'
 
 export interface SliderState {
   sliderValue: number
@@ -28,19 +25,25 @@ export interface SliderState {
 }
 
 const THRESHOLD = 100
+const ANIMATION_DURATION = 200
+const SNAP_THRESHOLD = 3
 
 function getLabel(value: number): StatusLabel {
-  if (value < 33) return 'Low'
-  if (value < 66) return 'Medium'
-  if (value < THRESHOLD) return 'High'
+  if (value < 33) return 'Flow'
+  if (value < 66) return 'Pro'
+  if (value < THRESHOLD) return 'Max'
   return 'Ultracode'
 }
 
 export function useSliderState(): SliderState {
+  const [targetValue, setTargetValue] = useState(70)
   const [sliderValue, setSliderValue] = useState(70)
   const [isAnimating, setIsAnimating] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const prevLabelRef = useRef<StatusLabel>(getLabel(70))
+  const animationRef = useRef<number | null>(null)
+  const startValueRef = useRef(70)
+  const startTimeRef = useRef(0)
 
   const statusLabel = getLabel(sliderValue)
   const isActive = sliderValue >= THRESHOLD
@@ -71,11 +74,45 @@ export function useSliderState(): SliderState {
   useEffect(() => {
     return () => {
       if (timerRef.current != null) clearTimeout(timerRef.current)
+      if (animationRef.current != null) cancelAnimationFrame(animationRef.current)
     }
   }, [])
 
+  useEffect(() => {
+    if (Math.abs(targetValue - sliderValue) < SNAP_THRESHOLD) {
+      setSliderValue(targetValue)
+      return
+    }
+
+    startValueRef.current = sliderValue
+    startTimeRef.current = performance.now()
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTimeRef.current
+      const progress = Math.min(elapsed / ANIMATION_DURATION, 1)
+
+      const eased = 1 - Math.pow(1 - progress, 3)
+      const current = startValueRef.current + (targetValue - startValueRef.current) * eased
+
+      setSliderValue(Math.round(current))
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate)
+      }
+    }
+
+    animationRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationRef.current != null) {
+        cancelAnimationFrame(animationRef.current)
+        animationRef.current = null
+      }
+    }
+  }, [targetValue])
+
   const onInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSliderValue(parseInt(e.target.value, 10))
+    setTargetValue(parseInt(e.target.value, 10))
   }, [])
 
   return { sliderValue, isActive, isFull, isAnimating, statusLabel, onInput }

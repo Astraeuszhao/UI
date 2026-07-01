@@ -1,243 +1,277 @@
 # UI
 
-> A personal archive of handpicked UI components, motion effects, and interaction designs: anything the author finds interesting, worth keeping, or visually remarkable.
+Personal collection of UI components, motion effects and interactive design archive repository, collecting all kinds of front-end implementations with outstanding visual performance or unique interaction effects that the author considers worthy of preservation.
 
 ---
 
-## About This Repository
+## Language / 语言
 
-This repository is a personal UI collection. It stores standalone components, animation effects, complete UI concepts, and distinctive interaction patterns that the author considers worth preserving.
-
-Each folder represents one independent project. Each project must have its own independent Git repository. This root repository exists only as a centralized archive.
-
-> **This repository is not actively maintained.** Each sub-project is maintained in its own repository. This archive is a static snapshot and will not be continuously synchronized.
+[中文](#中文) | [English](#english)
 
 ---
 
-## Technology Stack
+## 一、仓库整体说明
 
-All projects in this collection use, or may later use, the following technologies. Technologies marked with an asterisk (*) are currently used by at least one project in this collection.
+### 中文
 
-### Core
+本仓库属于**中心化归档总仓**，仅做目录聚合展示，不负责各子项目日常迭代维护。
 
-| Technology | Role |
-|------------|------|
-| **TypeScript** * | Primary language with strict mode enabled |
-| **React** * | UI framework using functional components and Hooks |
-| **Tailwind CSS** * | Utility-first CSS framework |
-| **Node.js** * | JavaScript runtime environment |
-| **Vite** * | Development server and build tool |
-| **nodemon** | Development-time watcher and restart utility |
+1. 总仓库内每一个独立文件夹，均对应一套完整独立工程；
+2. 每个子工程都拥有完全独立的Git仓库，并单独发布至GitHub平台；
+3. 本顶层总仓库仅做静态快照归档，不会持续同步各个子项目的日常更新；
+4. 本总仓库不做日常主动维护，所有功能迭代、Bug修复、版本更新均在各个子项目独立仓库内完成。
 
-### Styling and Animation
+<details>
+<summary>English</summary>
 
-| Technology | Role |
-|------------|------|
-| **WebGL / WebGL2** * | GPU-accelerated browser rendering |
-| **WebGPU** | Modern GPU rendering and compute API |
-| **Framer Motion / Motion** | React animation library |
-| **GSAP** | Professional animation platform |
-| **Three.js / React Three Fiber** | 3D rendering for the browser |
-| **Lottie** | JSON-based animation playback |
-| **CSS Houdini** | Low-level CSS painting and animation APIs |
+This repository acts as a centralized archive warehouse for directory aggregation only, without routine iteration maintenance for subprojects.
 
-### UI and Design Systems
+1. Each top-level folder corresponds to a fully independent engineering project;
+2. Every subproject maintains its own separate Git repository and is released independently on GitHub;
+3. This root repository only keeps static snapshot archives and will not synchronize daily updates of each subproject continuously;
+4. No active daily maintenance is performed in this root repo. All feature iterations, bug fixes and version upgrades are carried out within each standalone sub-repository.
 
-| Technology | Role |
-|------------|------|
-| **Radix UI** | Accessible unstyled primitives |
-| **shadcn/ui** | Composable UI components built on Radix UI |
-| **Headless UI** | Accessible unstyled components |
-| **Ariakit** | Accessible React component toolkit |
-| **cmdk** | Command palette primitive |
-| **Vaul** | Drawer primitive for React |
-
-### State and Data
-
-| Technology | Role |
-|------------|------|
-| **Zustand** | Lightweight state management |
-| **Jotai** | Atomic state management |
-| **Valtio** | Proxy-based state management |
-| **XState** | Finite state machines and statecharts |
-| **TanStack Query** | Server-state synchronization |
-| **SWR** | Remote data fetching Hooks |
-| **tRPC** | End-to-end type-safe APIs |
-| **Axios** | HTTP client |
-
-### Forms, Validation, and Utilities
-
-| Technology | Role |
-|------------|------|
-| **Zod** | TypeScript-first validation |
-| **React Hook Form** | Form state management |
-| **Valibot** | Lightweight schema validation |
-| **clsx / cva** | Class composition utilities |
-| **nanoid** | Compact unique ID generation |
-| **date-fns / Day.js** | Date utilities |
-| **Lodash / Radash** | Utility function collections |
-
-### Testing and Quality
-
-| Technology | Role |
-|------------|------|
-| **Vitest** | Vite-native unit testing |
-| **Jest** | JavaScript testing framework |
-| **React Testing Library** | UI behavior testing |
-| **Playwright** | End-to-end browser testing |
-| **Cypress** | Component and end-to-end testing |
-| **Storybook** | Isolated component development |
-| **ESLint** | Static code analysis |
-| **Prettier** | Code formatting |
-
-### Build, Deployment, and Infrastructure
-
-| Technology | Role |
-|------------|------|
-| **Rollup** | Library bundling |
-| **esbuild** | Fast JavaScript bundling |
-| **Webpack 5** | Configurable bundling |
-| **Next.js** | React framework |
-| **Remix** | Full-stack React framework |
-| **Astro** | Content-focused site generation |
-| **pnpm** | Fast package management |
-| **Turborepo** | Monorepo build system |
-| **Docker** | Containerization |
-| **GitHub Actions** | CI/CD workflows |
-| **Vercel** | Frontend deployment |
-| **Cloudflare Workers** | Edge compute |
+</details>
 
 ---
 
-## Project Index
+## 二、整体技术栈约束与完整清单
 
-| Directory | Project Name | Summary |
-|-----------|--------------|---------|
-| [`claude-range-slider`](./claude-range-slider) | Claude Range Slider | Effort slider with WebGL2 fire animation |
+### 技术准入强制规则
+
+#### 中文
+
+本仓库所有子项目开发、迭代、外部贡献PR提交，**仅允许使用下方罗列的技术栈**。
+
+1. 所有参与本项目开发的开发者，必须严格选用下表内技术进行业务开发；
+2. 外部人员提交PR时，若PR代码使用了本表未收录的技术，本仓库将直接拒绝合并；
+3. 若确实有合理业务场景需要新增未收录技术，提交PR时必须在PR描述最顶部单独写明：`申请新增技术：XXX`，附带详细使用理由、替代已有技术的优势、长期维护可行性，经审核通过后方可引入。
+
+<details>
+<summary>English</summary>
+
+All subproject development, iterations and external contribution PRs **must strictly adopt technologies listed below only**.
+
+1. All contributors must develop business functions using technologies within the list;
+2. Any PR adopting unlisted technologies will be rejected directly;
+3. If new technology is truly necessary for business scenarios, add a line at the very top of PR description: `Request to add technology: XXX`, including detailed reasons, advantages over existing alternatives and long-term maintainability. The technology can be introduced only after approval.
+
+</details>
+
+### 1、核心基础运行层
+
+TypeScript、JavaScript、React、Vite、Node.js、pnpm、npm、yarn、Bun、Deno、nodemon
+
+### 2、样式体系与动画渲染
+
+Tailwind CSS、CSS Modules、Plain CSS、CSS-in-JS、Framer Motion、Motion、GSAP、WebGL2、WebGPU、Three.js、React Three Fiber、Lottie、CSS Houdini、Canvas 2D API、OffscreenCanvas、SVG、SVG SMIL
+
+### 3、无样式基础UI组件基座
+
+Radix UI、shadcn/ui、Headless UI、Ariakit、cmdk、Vaul、React Aria、Floating UI、Radix Popover
+
+### 4、全局状态与远程数据管理
+
+Zustand、Jotai、Valtio、XState、TanStack Query、SWR、tRPC、Axios、Fetch API、React Context、Redux Toolkit
+
+### 5、表单校验与通用工具库
+
+Zod、Valibot、React Hook Form、clsx、cva、nanoid、uuid、date-fns、Day.js、Luxon、Lodash、Radash、crypto-js、js-base64
+
+### 6、代码质量与自动化测试
+
+ESLint、Prettier、Vitest、Jest、React Testing Library、Playwright、Cypress、Storybook、Chromatic、eslint-plugin-react-hooks、typescript-eslint
+
+### 7、打包工程化、部署与运维CI/CD
+
+Rollup、esbuild、Webpack 5、Next.js、Remix、Astro、Turborepo、Docker、Docker Compose、GitHub Actions、Vercel、Cloudflare Pages、Cloudflare Workers、Nginx
 
 ---
 
-## Repository Structure
+## 三、子项目总览索引表
 
-```text
-UI/
-|-- README.md
-|-- LICENSE
-`-- claude-range-slider/
-    |-- README.md
-    |-- package.json
-    |-- vite.config.ts
-    |-- tsconfig.json
-    `-- src/
-        |-- App.tsx
-        |-- main.tsx
-        |-- index.css
-        `-- components/
-            `-- EffortCard/
-                |-- EffortCard.tsx
-                |-- hooks/
-                |   |-- useSliderState.ts
-                |   `-- useWebglFire.ts
-                `-- shaders/
-                    `-- index.ts
+| 文件夹路径 | 项目全称 | 项目简要介绍 |
+|-----------|----------|--------------|
+| [`claude-range-slider`](./claude-range-slider) | Claude Range Slider | 基于WebGL2粒子火焰特效的等级拖拽滑动组件 |
+| [`modelnex-console`](./modelnex-console) | ModelNex Console | 交互式控制台登录页面，包含动画字符与错误提示系统 |
+
+---
+
+## 四、仓库强制管理规范
+
+### 1、子项目托管硬性规则
+
+#### 中文
+
+1. 所有独立业务必须单独放置顶层一级文件夹内；
+2. 每一个子文件夹必须拥有独立完整Git仓库，单独托管在GitHub；
+3. 顶层总仓库仅做目录聚合归档，不介入任何子项目业务迭代；
+4. 全项目所有对外公开文档、注释文案均使用标准美式正式英文撰写；
+5. 所有源码文件必须统一挂载标准文件头部版权声明；
+6. 全部代码严格遵循对应技术官方原版开发规范文档。
+
+<details>
+<summary>English</summary>
+
+1. Each independent business module shall be placed in an individual top-level folder;
+2. Each subfolder must correspond to a standalone full Git repository hosted on GitHub;
+3. The root repository is merely for catalog archiving and will not participate in any subproject business iteration;
+4. All public documents and code comments are written in formal American English;
+5. Every source file shall carry unified copyright header statement;
+6. All codes strictly follow official original specifications of corresponding technologies.
+
+</details>
+
+### 2、Git提交版本规范
+
+#### 中文
+
+所有子项目严格采用纯版本号式提交标题：
+
+1. 项目首次初始化提交标题固定：`V0.0.1`
+2. 后续每一次正式提交，仅递增最后一位数字：`V0.0.2`、`V0.0.3`……
+3. Commit正文仅填写简短正式英文描述，字数严格控制在3~4个单词以内。
+
+示例：
+
 ```
-
----
-
-## Repository Rules
-
-- Every project must live in its own folder.
-- Every project must have its own independent Git repository.
-- Every project must be published to GitHub.
-- This root repository exists only as an archive and may remain inactive.
-- All public-facing language must use formal American English.
-- All source files must include the standard file header.
-- All source code must follow the official standards for TypeScript, React, and Tailwind CSS.
-
-### GitHub Commit Rule
-
-Every project must use strict version-style commit titles.
-
-- The first project commit title must be exactly `V0.0.1`.
-- The second project commit title must be exactly `V0.0.2`.
-- Each later commit title must increment the final number by one.
-- The commit body may contain a short description, but it must use formal American English.
-- The commit body must not exceed three or four English words.
-
-Example:
-
-```text
 V0.0.1
 
 Initial release
 ```
 
----
+<details>
+<summary>English</summary>
 
-## Coding Standards
+All subprojects use pure version number as commit subject:
 
-Official documentation takes precedence in all style and convention decisions.
+1. Initial commit version: `V0.0.1`
+2. Increment the last digit for each formal release: `V0.0.2`, `V0.0.3`...
+3. Commit body uses concise formal English within 3~4 words.
 
-- **TypeScript**: Follow the TypeScript Handbook. Strict mode must remain enabled.
-- **React**: Follow the React official documentation. Use functional components and Hooks.
-- **Tailwind CSS**: Follow the Tailwind CSS official documentation.
-- **Comments**: Use JSDoc-style comments where documentation is necessary.
-- **Naming**: Components use PascalCase. Hooks use the `use` prefix. Utility functions use camelCase. Constants use SCREAMING_SNAKE_CASE.
-- **Formatting**: Prefer Prettier-compatible formatting. Avoid manual formatting exceptions.
+Example:
 
-### Standard File Header
+```
+V0.0.1
 
-Every source file must begin with the following header:
+Initial release
+```
+
+</details>
+
+### 3、强制源码标准文件头
 
 ```typescript
 /**
- * @file        ComponentName.tsx
+ * @file        FileName.tsx
  * @author      Astraeus
- * @created     YYYY-MM-DD HH:mm:ss UTC
- * @license     MIT
+ * @created     2026-XX-XX HH:mm:ss UTC
+ * @license     GPL-2.0-only
  *
- * Brief description of what this file does.
+ * Brief description of current file function
  *
  * @disclaimer
- * This file is released under the MIT License. Anyone may use it for any
- * purpose. The author accepts no liability for any outcome arising from its use.
- * All rights and final interpretation of this file are reserved by the author.
- * To contact the author: astraeuszhao@gmail.com
+ * This file is distributed under GNU General Public License v2.0. Anyone who modifies any source files of this project shall fully open-source all modified codes under the same GPLv2 license. The author assumes no liability for any direct or indirect economic losses and legal risks arising from the usage of this code. All interpretation rights of this repository belong exclusively to Astraeus. Contact: astraeuszhao@gmail.com
  */
 ```
 
 ---
 
-## Attribution and References
+## 五、灵感来源与引用说明
 
-The code in this repository is an original implementation and does not directly incorporate third-party source code. The following source provided substantial creative inspiration and visual reference:
+### 中文
 
-| Source | Nature of Reference |
-|--------|---------------------|
-| **Claude Code** by [Anthropic](https://www.anthropic.com) | Effort-level slider UI, fire animation behavior, and the general visual direction used by `claude-range-slider`. |
+本仓库所有代码均为独立原创实现，未直接复制第三方完整源码，仅在视觉创意与交互思路上参考如下来源：
 
-If you believe this repository infringes upon your rights, please contact the author directly before pursuing formal action. The implementation process can be explained upon request.
+| 参考来源 | 具体借鉴范围 |
+|----------|--------------|
+| Anthropic旗下Claude Code | `claude-range-slider`项目的能效滑动条结构、火焰粒子动效整体视觉风格与交互逻辑 |
 
----
+若相关权利人认为本仓库存在侵权行为，请优先通过邮箱与作者私下沟通，可完整提供全部开发实现流程资料进行核对。
 
-## Contact
+<details>
+<summary>English</summary>
 
-For questions, suggestions, or rights-related inquiries:
+All codes are original independent implementations without copying full third-party source codes. Only visual ideas and interaction logic are referenced:
 
-- Website: [astraeuszhao.com](https://astraeuszhao.com)
-- Website: [smartdolphin.top](https://smartdolphin.top)
-- Email: astraeuszhao@gmail.com
+| Reference Source | Detailed Reference Scope |
+|----------|--------------|
+| Claude Code (Anthropic) | Structure, particle flame visual style and interaction logic of `claude-range-slider` |
 
----
+If any copyright holder believes there is infringement, please contact the author via email for full development materials verification privately.
 
-## Disclaimer
-
-All content in this repository, including code, designs, and associated materials, is freely available for any commercial or non-commercial use. The author accepts no responsibility for any direct or indirect loss, legal dispute, or consequence arising from its use.
-
-All rights to this repository and its contents, including the right of final interpretation, are reserved by the author (Astraeus).
+</details>
 
 ---
 
-## License
+## 六、联系方式
 
-[MIT License](./LICENSE) Copyright (c) 2026 Astraeus
+### 中文
+
+电子邮箱：astraeuszhao@gmail.com
+
+<details>
+<summary>English</summary>
+
+E-mail：astraeuszhao@gmail.com
+
+</details>
+
+---
+
+## 七、完整免责声明
+
+### 中文
+
+本仓库内所有源代码、界面设计、素材资料，全部依照 **GNU GPLv2开源协议** 对外公开。
+
+任何个人、企业均可自由商用、二次修改、二次分发，但必须严格遵守GPLv2协议约束：只要修改本仓库内任意源码文件，则该部分修改后的全部代码必须同步开源，并且继续采用GPLv2协议。
+
+作者不承担任何人使用本项目代码带来的一切直接、间接经济损失、安全事故、法律诉讼等全部相关责任。
+
+本仓库全部内容、条款、协议的最终解释权，完全归属作者 Astraeus。
+
+<details>
+<summary>English</summary>
+
+All source codes, UI designs and materials are released under **GNU GPLv2 License**.
+
+Individuals and enterprises are allowed for commercial usage, modification and redistribution, with one restriction: any modified source files must be fully open-sourced under GPLv2 license.
+
+The author shall not be liable for any direct or indirect financial losses, security incidents or legal lawsuits caused by using these codes. The final interpretation of all contents and clauses belongs solely to Astraeus.
+
+</details>
+
+---
+
+## 八、开源协议
+
+### 中文
+
+本总仓库及全部子项目均采用 **GNU General Public License v2.0（GPLv2）** 开源协议，完整协议文本查看：[LICENSE](./LICENSE)
+
+版权所有：Copyright (C) 2000-2026 Astraeus
+
+<details>
+<summary>English</summary>
+
+This root repository and all subprojects are licensed under **GNU General Public License v2.0 (GPLv2)**. Full license text: [LICENSE](./LICENSE)
+
+Copyright (C) 2000-2026 Astraeus
+
+</details>
+
+---
+
+## 九、代码规范指引
+
+### 中文
+
+本项目统一编码规范详见项目根目录：`CODE_STANDARD.md`，所有开发与PR评审必须遵照执行。
+
+<details>
+<summary>English</summary>
+
+Global coding standards are defined in root file: `CODE_STANDARD.md`, which must be followed in all development and PR reviews.
+
+</details>
