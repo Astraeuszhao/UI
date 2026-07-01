@@ -1,0 +1,6 @@
+[submodule "claude-range-slider"]
+	path = claude-range-slider
+	url = https://github.com/Astraeuszhao/claude-range-slider.git
+[submodule "modelnex-console"]
+	path = modelnex-console
+	url = https://github.com/Astraeuszhao/modelnex-console.git
