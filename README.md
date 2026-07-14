@@ -45,6 +45,7 @@ All subproject development, iterations and external contribution PRs **must stri
 |--------|--------------|-------------|---------|
 | claude-range-slider | Claude Range Slider | WebGL2 particle flame effect effort level slider | V0.0.3 |
 | modelnex-console | ModelNex Console | Interactive console login page with animations | V0.0.1 |
+| smart-dolphin-verification | Smart Dolphin Verification | Reusable PlayCaptcha and ALTCHA human verification UI and API reference | V0.0.1 |
 
 ---
 
