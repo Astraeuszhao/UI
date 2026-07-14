@@ -2,6 +2,8 @@
 
 Smart Dolphin Verification is a reusable human-verification package combining a PlayCaptcha claw-machine interaction with an ALTCHA proof-of-work backend check.
 
+<video src="./public/demo.mp4" controls width="100%"></video>
+
 The visual layer stays playful, while the backend performs signed challenge verification, expiration checks, rate limiting and one-time replay protection.
 
 ## Features
