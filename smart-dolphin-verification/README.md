@@ -2,7 +2,7 @@
 
 Smart Dolphin Verification is a reusable human-verification package combining a PlayCaptcha claw-machine interaction with an ALTCHA proof-of-work backend check.
 
-![Smart Dolphin Verification demo](./public/demo.gif)
+![Smart Dolphin Verification demo](./public/smart-dolphin-demo.gif)
 
 [Download the MP4 demo](./public/demo.mp4)
 
@@ -19,22 +19,22 @@ The visual layer stays playful, while the backend performs signed challenge veri
 
 ## API
 
-Default API base:
+API base URL:
 
 ```text
 https://api.smartdolphin.top
 ```
 
-Challenge endpoint:
+Challenge endpoint (complete URL):
 
 ```text
-GET /api/chat/challenge
+GET https://api.smartdolphin.top/api/chat/challenge
 ```
 
-Verification endpoint:
+Verification endpoint (complete URL):
 
 ```text
-POST /api/chat/verify
+POST https://api.smartdolphin.top/api/chat/verify
 Content-Type: application/json
 
 {
