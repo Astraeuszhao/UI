@@ -126,4 +126,4 @@ The visual design, animation behavior, and WebGL rendering pipeline are heavily 
 
 ## License
 
-[MIT License](../LICENSE) &copy; 2026 Astraeus
+[Apache License 2.0](../LICENSE) &copy; 2026 Astraeus

@@ -75,12 +75,12 @@ All subprojects use pure version number as commit subject:
  * @file        FileName.tsx
  * @author      Astraeus
  * @created     2026-XX-XX HH:mm:ss UTC
- * @license     MIT
+ * @license     Apache-2.0
  *
  * Brief description of current file function
  *
  * @disclaimer
- * This file is distributed under the MIT License. The software is provided "as is", without warranty of any kind. Contact: astraeuszhao@gmail.com
+ * This file is distributed under the Apache License 2.0. The software is provided "as is", without warranty of any kind. Contact: astraeuszhao@gmail.com
  */
 ```
 
@@ -102,7 +102,7 @@ E-mail: astraeuszhao@gmail.com
 
 ## VII. License
 
-**MIT License** - See LICENSE file for full text.
+**Apache License 2.0** - See LICENSE file for full text.
 
 Copyright (C) 2000-2026 Astraeus
 

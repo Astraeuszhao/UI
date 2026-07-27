@@ -145,7 +145,7 @@ In case of conflicts between multiple specifications, priority rules from highes
 All source files must attach this header at the very beginning:
 
 ```
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: Apache-2.0
 // Copyright (C) 2000-2026 Astraeus <astraeuszhao@gmail.com>
 ```
 
