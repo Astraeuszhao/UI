@@ -72,4 +72,4 @@ modelnex-console/
 
 ## License
 
-GPL-2.0-only
+MIT License

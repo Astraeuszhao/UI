@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0-only
+// SPDX-License-Identifier: MIT
 // Copyright (C) 2000-2026 Astraeus <astraeuszhao@gmail.com>
 
 import { solveChallenge, pbkdf2, type Challenge, type Payload } from 'altcha/lib';
