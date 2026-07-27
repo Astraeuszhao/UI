@@ -122,4 +122,4 @@ go run .
 
 ## License
 
-GPL-2.0-only
+MIT License

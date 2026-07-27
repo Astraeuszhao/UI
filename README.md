@@ -75,12 +75,12 @@ All subprojects use pure version number as commit subject:
  * @file        FileName.tsx
  * @author      Astraeus
  * @created     2026-XX-XX HH:mm:ss UTC
- * @license     GPL-2.0-only
+ * @license     MIT
  *
  * Brief description of current file function
  *
  * @disclaimer
- * This file is distributed under GNU General Public License v2.0. Anyone who modifies any source files of this project shall fully open-source all modified codes under the same GPLv2 license. The author assumes no liability for any direct or indirect economic losses and legal risks arising from the usage of this code. All interpretation rights of this repository belong exclusively to Astraeus. Contact: astraeuszhao@gmail.com
+ * This file is distributed under the MIT License. The software is provided "as is", without warranty of any kind. Contact: astraeuszhao@gmail.com
  */
 ```
 
@@ -102,7 +102,7 @@ E-mail: astraeuszhao@gmail.com
 
 ## VII. License
 
-**GNU General Public License v2.0 (GPLv2)** - See LICENSE file for full text.
+**MIT License** - See LICENSE file for full text.
 
 Copyright (C) 2000-2026 Astraeus
 

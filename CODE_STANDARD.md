@@ -145,7 +145,7 @@ In case of conflicts between multiple specifications, priority rules from highes
 All source files must attach this header at the very beginning:
 
 ```
-// SPDX-License-Identifier: GPL-2.0-only
+// SPDX-License-Identifier: MIT
 // Copyright (C) 2000-2026 Astraeus <astraeuszhao@gmail.com>
 ```
 
